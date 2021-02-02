@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Version 0.1
+Instalacion del `Angular CLI` y de los modulos necesarios como `Bootstrap` y `FontAwesome`, creacion de los componentes `home` y `Estructura` [con cabecera, footer y navbar].
+Despliegue con firebase y pruebas iniciales.
