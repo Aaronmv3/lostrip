@@ -1,2 +1,2 @@
 # lostrip
-Proyecto para clase
+Pagina
