@@ -39,6 +39,11 @@
                                 <fa-icon [icon]="faTwitter"></fa-icon>
                             </a>
                         </li>
+                        <li>
+                            <a href="#" title="Google+">
+                                <fa-icon [icon]="faGooglePlus"></fa-icon>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +53,12 @@
                 </div>
             </div>
 
-
         </div>
+    </div>
+    <div class="cookies" [ngStyle]="{'display':aceptada}">
+        <p>Las cookies de este sitio se usan para personalizar el contenido y los anuncios para ofrecer funciones de medios sociales y para analizar el tráfico.
+            <a href="#">Mas información</a>
+        </p>
+        <button (click)="aceptarCookies()" type="button" class="btn btn-outline-warning">Aceptar</button>
     </div>
 </footer>
