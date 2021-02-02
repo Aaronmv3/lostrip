@@ -8,11 +8,11 @@
                 <a class="nav-link" [routerLink]="['home']">
                     <fa-icon class="icono-nav" [icon]="faHome"></fa-icon>Principal</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['alojamientos']">
                     <fa-icon class="icono-nav" [icon]="faHotel"></fa-icon>Alojamientos</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" href="#">
                     <fa-icon class="icono-nav" [icon]="faMosque"></fa-icon>Experiencias</a>
             </li>

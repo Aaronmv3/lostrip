@@ -1,0 +1,11 @@
+<div class="muestraAlojamientos">
+    <app-formulario-busqueda class="formularioBusqueda"></app-formulario-busqueda>
+    <div class="informacionBusqueda">
+        <h1>España: {{alojamientos.length}} alojamientos</h1>
+
+        <div class="card-group">
+            <app-alojamiento-tarjeta class="tarjeta" [Alojamiento]="Alojamiento" [index]="i" [mostrar]="true" *ngFor="let Alojamiento of alojamientos; let i = index"></app-alojamiento-tarjeta>
+        </div>
+    </div>
+    <div class="filtrosBusqueda"></div>
+</div>

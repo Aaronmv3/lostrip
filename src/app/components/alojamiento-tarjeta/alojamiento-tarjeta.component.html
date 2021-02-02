@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="card-img"><img [src]="Alojamiento.foto" [alt]="Alojamiento.nombre"></div>
+    <div class="card-body">
+        <h5>{{Alojamiento.nombre}}</h5>
+        <h6 class="pt-1 pb-2 precio">{{Alojamiento.precio}}€/noche</h6>
+        <p *ngIf="mostrar == true">{{Alojamiento.descripcion}}</p>
+        <button (click)="verAlojamiento()" type="button" class="btn btn-outline-danger btn-block btn-sm">Descubre este alojamiento</button>
+    </div>
+</div>

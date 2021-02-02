@@ -45,3 +45,31 @@
       display: inline;
       margin: 0 10px;
   }
+  
+  .cookies {
+      position: fixed;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.74);
+      width: 100%;
+      text-align: center;
+  }
+  
+  .cookies button {
+      position: absolute;
+      left: 75%;
+      bottom: 10px;
+  }
+  
+  .cookies p {
+      width: 45%;
+      position: relative;
+      left: 25%;
+      padding: 10px;
+  }
+  
+  @media(max-width:330px) {
+      .cookies button {
+          position: relative;
+          left: 0;
+      }
+  }
