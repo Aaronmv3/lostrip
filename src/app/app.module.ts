@@ -16,12 +16,6 @@ import { FooterComponent } from './components/Estructura/footer/footer.component
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CabeceraComponent } from './components/Estructura/cabecera/cabecera/cabecera.component';
-import { AlojamientoTarjetaComponent } from './components/alojamiento-tarjeta/alojamiento-tarjeta.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-import { SortByPipe } from './pipes/sort-by.pipe';
-import { ListaAlojamientosComponent } from './components/paginas/lista-alojamientos/lista-alojamientos.component';
-import { FormularioBusquedaComponent } from './components/formulario-busqueda/formulario-busqueda.component';
-
 
 
 @NgModule({
