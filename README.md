@@ -1,2 +1,2 @@
 # lostrip
-Clase
+Proyecto para clase
