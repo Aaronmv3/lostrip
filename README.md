@@ -1,4 +1,4 @@
-## Version 0.2
+## Version 0.2 (Current)
 Creacion del servicio de hoteles y uso de json para pruebas.
 
 Creacion de la pagina alojamientos con barra de busqueda usable.
