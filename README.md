@@ -1,0 +1,2 @@
+# lostrip
+Clase
