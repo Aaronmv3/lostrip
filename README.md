@@ -7,7 +7,7 @@ Usar el servicio para generar los alojamientos en la pagina home y alojamientos
 
 Creacion de pipe sortBy para la ordenacion de arrays.
 
-Separacion de las tarjetas y caroussel en otros componentes para evitar repeticiones
+Separacion de las tarjetas, caroussel y formulario en otros componentes para evitar repeticiones
 
 Filtro para alojamientos en oferta
 
