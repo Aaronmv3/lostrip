@@ -29,3 +29,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Version 0.1
 Instalacion del `Angular CLI` y de los modulos necesarios como `Bootstrap` y `FontAwesome`, creacion de los componentes `home` y `Estructura` [con cabecera, footer y navbar].
  Despliegue con firebase y pruebas iniciales.
+ 
+ ## Version 0.2 (Live)
+Creacion del servicio de hoteles y uso de json para pruebas.
+
+Creacion de la pagina alojamientos
+
+Usar el servicio para generar los alojamientos en la pagina home y alojamientos
+
+Creacion de pipe sortBy para la ordenacion de arrays.
+
+Separacion de las tarjetas, caroussel y formulario en otros componentes para evitar repeticiones
+
+Filtro para alojamientos en oferta
+
+Implementacion de sistema de cookies para contabilizar las veces entrado en la pagina
