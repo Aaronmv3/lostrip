@@ -11,3 +11,4 @@ Separacion de las tarjetas y caroussel en otros componentes para evitar repetici
 
 Filtro para alojamientos en oferta
 
+Implementacion de sistema de cookies para contabilizar las veces entrado en la pagina
