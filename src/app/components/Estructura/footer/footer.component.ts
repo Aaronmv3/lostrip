@@ -25,8 +25,6 @@ export class FooterComponent implements OnInit {
       this.aceptada = 'initial'
     }else{
       this.aceptada = 'none'
-      console.log(this.vecesEntrado);
-      
       document.cookie = "veces=" + this.vecesEntrado;
     }
     
@@ -36,7 +34,7 @@ export class FooterComponent implements OnInit {
   aceptarCookies(){
     this.aceptada = 'none';
     this.vecesEntrado = 1
-    document.cookie = "veces=" + this.vecesEntrado;
+    document.cookie = "veces=" + this.vecesEntrado + "; expires=Thu, 1 Jan 2022 12:00:00 UTC";
     
   }
 

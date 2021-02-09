@@ -1,11 +1,22 @@
 <div class="muestraAlojamientos">
-    <app-formulario-busqueda class="formularioBusqueda"></app-formulario-busqueda>
+    <app-formulario-busqueda class="formularioBusqueda" (resultForm)="obtenerBusqueda($event)"></app-formulario-busqueda>
+    <div class="filtrosBusqueda">
+        <form [formGroup]="shortByForm" class="form-mat-sort">
+            <mat-form-field appearance="fill" class="selectorOrden">
+                <mat-label class="texto-mat">Ordenar por:</mat-label>
+                <mat-select class="texto-mat" formControlName="shortBy" disableRipple>
+                    <mat-option class="option-mat" *ngFor="let orden of ordenado" [value]="orden" (click)="ordenarAlojamientos()">
+                        {{orden}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <app-filtros-busqueda class="filtros-app" (filtrado)="AplicarFiltros($event)"></app-filtros-busqueda>
+    </div>
     <div class="informacionBusqueda">
-        <h1>España: {{alojamientos.length}} alojamientos</h1>
-
+        <h1>{{busqueda.busqueda}}: {{alojamientos.length}} alojamientos</h1>
         <div class="card-group">
-            <app-alojamiento-tarjeta class="tarjeta" [Alojamiento]="Alojamiento" [index]="i" [mostrar]="true" *ngFor="let Alojamiento of alojamientos; let i = index"></app-alojamiento-tarjeta>
+            <app-alojamiento-tarjeta class="tarjeta" [Alojamiento]="Alojamiento" [habitaciones]="this.busqueda.numHabitaciones" [index]="i" [mostrar]="true" *ngFor="let Alojamiento of alojamientos | sortBy: ordenacion: valor; let i = index"></app-alojamiento-tarjeta>
         </div>
     </div>
-    <div class="filtrosBusqueda"></div>
 </div>

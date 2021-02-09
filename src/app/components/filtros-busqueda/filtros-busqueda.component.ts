@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class FiltrosBusquedaComponent implements OnInit {
 
+
+  @Output() filtrado = new EventEmitter<any>();
   public filterForm: FormGroup;
 
   filtroPanelOpenState = false
@@ -21,8 +23,8 @@ export class FiltrosBusquedaComponent implements OnInit {
         filtros: new FormControl('')
     })
   }
-  mostrar(){
-    console.log(this.filterForm.value.filtros);
+  enviar(){
+   this.filtrado.emit(this.filterForm.value.filtros);
     
   }
 }

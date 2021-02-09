@@ -8,8 +8,7 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list #filterList formControlName="filtros">
-            <mat-list-option *ngFor="let filtro of filtros" [value]="filtro">{{filtro}}</mat-list-option>
+            <mat-list-option (click)="enviar()" *ngFor="let filtro of filtros" [value]="filtro">{{filtro}}</mat-list-option>
         </mat-selection-list>
     </mat-expansion-panel>
-    <p (click)="mostrar()">tocar</p>
 </form>

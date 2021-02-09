@@ -1,23 +1,24 @@
 .muestraAlojamientos {
     display: grid;
-    grid-template-columns: 25% 70% 20%;
-    grid-template-rows: 16%;
+    grid-template-columns: 30% 50% 20%;
+    grid-template-rows: 17%;
     grid-template-areas: "busqueda main filtros";
+    background: -webkit-linear-gradient(59deg, #947a7a, lightgray);
+    background: linear-gradient(59deg, #947a7a, lightgray);
+    background-attachment: fixed;
 }
 
 .formularioBusqueda {
     grid-area: busqueda;
     width: 100%;
-    margin: 16% 3%;
-    padding: 3%;
-    background-color: rgb(228, 228, 228);
-    border-radius: 15px;
+    margin: 13% 2%;
     position: sticky;
-    top: 10%;
+    top: 8vh;
 }
 
 .tarjeta {
-    width: 60%;
+    grid-area: main;
+    width: 80%;
     margin: 10px 3%;
 }
 
@@ -26,8 +27,181 @@
     font-weight: bold;
     position: relative;
     left: 3%;
+    width: 100%;
+}
+
+.informacionBusqueda h1::first-letter {
+    text-transform: uppercase;
 }
 
 .filtrosBusqueda {
     grid-area: filtros;
+    position: sticky;
+    top: 8vh;
+}
+
+.filtros-app {
+    position: relative;
+    top: 2.7vh;
+    right: 7vw;
+}
+
+.form-mat-sort {
+    position: relative;
+    border-radius: 5px;
+    top: 7.7vh;
+    right: 2vw;
+    padding: 0;
+    width: 50%;
+    float: right;
+    height: 5.3vh;
+    background-color: rgb(49, 49, 49);
+}
+
+.selectorOrden {
+    border-radius: 5px;
+    color: white;
+    width: 10vw;
+}
+
+.texto-mat {
+    color: white;
+}
+
+@media(max-width: 1680px) {
+    .muestraAlojamientos {
+        grid-template-rows: 20%;
+    }
+    .formularioBusqueda {
+        top: 21%;
+    }
+    .filtrosBusqueda {
+        top: 13%;
+    }
+}
+
+@media(max-width: 1300px) {
+    .form-mat-sort {
+        top: 15vh;
+        float: left;
+        left: -7vw;
+        width: 18vw;
+        display: block;
+    }
+    .selectorOrden {
+        width: 18vw;
+    }
+}
+
+@media(max-width: 1210px) {
+    .muestraAlojamientos {
+        grid-template-rows: 22%;
+    }
+    .filtrosBusqueda {
+        top: 14%;
+    }
+}
+
+@media(max-width: 1024px) {
+    .form-mat-sort {
+        top: 16vh;
+    }
+    .formularioBusqueda {
+        top: 26.5vh;
+    }
+    .filtrosBusqueda {
+        top: 18vh;
+    }
+}
+
+@media(max-width: 990px) {
+    .muestraAlojamientos {
+        display: block;
+        padding: 10px;
+    }
+    .formularioBusqueda {
+        display: block;
+        width: 90%;
+        background-color: rgb(228, 228, 228);
+        border-radius: 15px;
+        margin: 3%;
+        position: relative;
+    }
+    .filtrosBusqueda {
+        position: relative;
+        display: flex;
+        right: 0;
+        left: 3%;
+        margin-bottom: 6vh;
+    }
+    .informacionBusqueda h1 {
+        font-size: 30px;
+        font-weight: bold;
+        position: relative;
+        left: 3%;
+        width: 80%;
+    }
+    .form-mat-sort {
+        top: 2.7vh;
+        float: inherit;
+        left: 50vw;
+        width: 20vw;
+    }
+    .selectorOrden {
+        width: 20vw;
+    }
+}
+
+@media(max-width: 600px) {
+    .form-mat-sort {
+        width: 25vw;
+        left: 55vw;
+    }
+    .selectorOrden {
+        width: 25vw;
+    }
+}
+
+@media(max-width: 470px) {
+    .filtrosBusqueda {
+        display: flex;
+        flex-direction: column;
+        left: 0;
+    }
+    .form-mat-sort {
+        width: 90vw;
+        left: 0;
+    }
+    .selectorOrden {
+        width: 90vw;
+    }
+    .filtros-app {
+        position: relative;
+        top: 4vh;
+        right: 0;
+    }
+}
+
+@media(max-height: 1024px) {
+    .form-mat-sort {
+        height: 5vh;
+    }
+}
+
+@media(max-height: 880px) {
+    .form-mat-sort {
+        height: 6vh;
+    }
+}
+
+@media(max-height: 730px) {
+    .form-mat-sort {
+        height: 7vh;
+    }
+}
+
+@media(max-height: 630px) {
+    .form-mat-sort {
+        height: 8vh;
+    }
 }

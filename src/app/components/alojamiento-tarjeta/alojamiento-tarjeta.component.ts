@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -11,15 +11,16 @@ export class AlojamientoTarjetaComponent implements OnInit {
   
   @Input() Alojamiento: any = {};
   @Input() index: number;
-
+  @Input() habitaciones = 1;
   @Input() mostrar: boolean;
 
-  @Output() alojamientoSeleccionado: EventEmitter<number>;
+
+
   constructor(private router: Router) {
-    this.alojamientoSeleccionado = new EventEmitter();
    }
 
   ngOnInit(): void {
+        
   }
   
   verAlojamiento(){

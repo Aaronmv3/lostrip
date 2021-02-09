@@ -3,6 +3,12 @@
     margin-bottom: 30px;
 }
 
+.formulario {
+    background-color: white;
+    padding: 3%;
+    border-radius: 15px;
+}
+
 .form-control {
     background-color: #ebecee;
     border-radius: 4px;
@@ -116,6 +122,12 @@ select.form-control+.select-arrow:after {
 @media(max-width:767px) {
     .encabezado-form {
         display: none;
+    }
+}
+
+@media(max-width:525px) {
+    .show {
+        width: 80% !important;
     }
 }
 

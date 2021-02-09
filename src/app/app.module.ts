@@ -11,17 +11,23 @@ import { AlojamientosService } from './servicios/alojamientos.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/Estructura/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './components/Estructura/footer/footer.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CabeceraComponent } from './components/Estructura/cabecera/cabecera/cabecera.component';
-import { AlojamientoTarjetaComponent } from './components/alojamiento-tarjeta/alojamiento-tarjeta.component';
+import { FooterComponent } from './components/Estructura/footer/footer.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
-import { ListaAlojamientosComponent } from './components/paginas/lista-alojamientos/lista-alojamientos.component';
 import { FormularioBusquedaComponent } from './components/formulario-busqueda/formulario-busqueda.component';
+import { AlojamientoTarjetaComponent } from './components/alojamiento-tarjeta/alojamiento-tarjeta.component';
+import { ListaAlojamientosComponent } from './components/paginas/lista-alojamientos/lista-alojamientos.component';
 
+//Imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FiltrosBusquedaComponent } from './components/filtros-busqueda/filtros-busqueda.component'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -36,6 +42,7 @@ import { FormularioBusquedaComponent } from './components/formulario-busqueda/fo
     SortByPipe,
     ListaAlojamientosComponent,
     FormularioBusquedaComponent,
+    FiltrosBusquedaComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,13 @@ import { FormularioBusquedaComponent } from './components/formulario-busqueda/fo
     FontAwesomeModule,
     BrowserAnimationsModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatListModule,
+    MatSelectModule
+    
   ],
   providers: [
     AlojamientosService

@@ -9,6 +9,7 @@
 
 #search {
     background-image: url('/assets/Imagenes/playa.jpg');
+    background-attachment: fixed;
 }
 
 .section .section-center {

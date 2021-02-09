@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BusquedaService, busqueda } from '../../servicios/busqueda.service';
 
 @Component({
   selector: 'app-formulario-busqueda',
@@ -8,46 +10,37 @@ import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-b
 })
 export class FormularioBusquedaComponent implements OnInit {
 
-  hoveredDate: NgbDate | null = null;
-  fromDate: NgbDate | null;
-  toDate: NgbDate | null;
 
+  @Output() resultForm = new EventEmitter<busqueda>();
 
-  constructor( private calendar: NgbCalendar, public formatter: NgbDateParserFormatter ) {
-    console.log('constructor');
-    this.fromDate = calendar.getToday();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+  public searchForm: FormGroup;
+  public buscar: busqueda;
+  public fecha = new Date();
+
+  constructor( private fb: FormBuilder, private route: Router, public busqueda: BusquedaService) {
+
     
   }
   ngOnInit(): void {
+    this.searchForm = this.fb.group({
+      busqueda: new FormControl(''),
+      entrada: new FormControl(''),
+      salida: new FormControl(''),
+      numHabitaciones: new FormControl(1),
+      numAdultos: new FormControl(2),
+      numNinos: new FormControl(0)
+    })
+    
   }
-
-  //Date range picker functions
-  onDateSelection(date: NgbDate) {
-    if (!this.fromDate && !this.toDate) {
-      this.fromDate = date;
-    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
-      this.toDate = date;
-    } else {
-      this.toDate = null;
-      this.fromDate = date;
+  enviarBusqueda(){
+    this.buscar = this.busqueda.crearBusqueda(this.searchForm.value.busqueda, this.searchForm.value.entrada, this.searchForm.value.salida, parseInt(this.searchForm.value.numHabitaciones),
+    parseInt(this.searchForm.value.numAdultos), parseInt(this.searchForm.value.numNinos));
+    if(this.route.url == "/home"){
+      this.busqueda.pasarBusqueda = this.buscar;
+    }else{
+      this.resultForm.emit(this.buscar);
     }
+    return this.route.navigate(["/alojamientos"]);
   }
 
-  isHovered(date: NgbDate) {
-    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
-  }
-
-  isInside(date: NgbDate) {
-    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
-  }
-
-  isRange(date: NgbDate) {
-    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
-  }
-
-  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
-    const parsed = this.formatter.parse(input);
-    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
-  }
 }

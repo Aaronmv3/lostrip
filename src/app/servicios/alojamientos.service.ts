@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { busqueda } from './busqueda.service';
 
 @Injectable()
 
@@ -9,44 +10,61 @@ export class AlojamientosService {
       nombre: 'Casa en la montaña',
       precio: 76,
       dueño: 'Jose Ramon',
-      localizacion: 'Leon',
+      localizacion: 'leon',
       foto: '/assets/Imagenes/alojamientos/montanaLeon.jpg',
-      descripcion: 'Acogedora casa en la sierra de León'
+      descripcion: 'Acogedora casa en la sierra de León',
+      ubicacion:[
+        "Montaña",
+        "Piscina",
+      ],
     },
     {
       nombre: 'Piso en la playa',
       precio: 90,
       dueño: 'Luis Fernando',
-      localizacion: 'Baiona',
+      localizacion: 'baiona',
       foto: '/assets/Imagenes/alojamientos/playaBaiona.jpg',
       descripcion: 'Piso en primera linea de playa en el pueblo de Baiona',
-      oferta: true
+      oferta: true,
+      ubicacion:[
+        "Playa"
+      ],
     },
     {
       nombre: 'Hotel Barcelo Ourense',
       precio: 56,
       dueño: 'Barcelo',
-      localizacion: 'Ourense',
+      localizacion: 'ourense',
       foto: '/assets/Imagenes/alojamientos/BarceloOurense.jpg',
-      descripcion: 'Gran hotel de 4 estrellas en el centro de Ourense'
+      descripcion: 'Gran hotel de 4 estrellas en el centro de Ourense',
+      ubicacion:[
+        "Ciudad"
+      ],
     },
     {
       nombre: 'Palace Madrid',
       precio: 120,
       dueño: 'Palace',
-      localizacion: 'Madrid',
+      localizacion: 'madrid',
       foto: '/assets/Imagenes/alojamientos/PalaceMadrid.jpg',
       descripcion: 'Gran hotel en el centro de Madrid a pocos metros de una estacion de metro',
-      oferta: true
+      oferta: true,
+      ubicacion:[
+        "Ciudad",
+      ],
     },
     {
       nombre: 'El avenida Palace',
       precio: 170,
       dueño: 'Avenida palace',
-      localizacion: 'Barcelona',
+      localizacion: 'barcelona',
       foto: '/assets/Imagenes/alojamientos/PalaceBarcelona.jpg',
       descripcion: 'Hotel en barcelona',
-      oferta: true
+      oferta: true,
+      ubicacion:[
+        "Ciudad",
+        "Piscina",
+      ],
     }
   ];
 
@@ -64,21 +82,54 @@ export class AlojamientosService {
   }
 
   buscarAlojamiento( busqueda: string){
+    if(busqueda == "Total"){
+      return this.alojamientos;
+    }else{
+        busqueda = busqueda.toLowerCase();
+        let busquedaAlojamiento: Alojamiento[] = [];
 
-    let alojamientosArr: Alojamiento[] = [];
-    busqueda = busqueda.toLowerCase();
+        busquedaAlojamiento = this.alojamientos.filter(alojamiento => alojamiento.localizacion == busqueda);
 
-    for(let i = 0; i < this.alojamientos.length; i++){
-      let alojamiento = this.alojamientos[i];
-      let nombre = alojamiento.nombre.toLowerCase();
-      if(nombre.indexOf(busqueda) >= 0){
-        alojamiento.idx = i;
-        alojamientosArr.push(alojamiento);
+        return busquedaAlojamiento;
       }
     }
-  return alojamientosArr;
 
+  filtrarAlojamiento(filtros: Array<string>, alojamientosFiltrar: Alojamiento[], alojamientosGuardar: Alojamiento[], filtrado2: boolean){
+    if(filtros.length == 0 || filtrado2 == true){
+      return alojamientosGuardar;
+    }else{
+      let filtro: Alojamiento[] = [];
+      for(let i = 0; i <  filtros.length; i++){
+        if(i == 0){
+         for(let j = 0; j < alojamientosFiltrar.length; j++){
+          for(let k = 0; k < alojamientosFiltrar[j].ubicacion.length; k++){
+              if(alojamientosFiltrar[j].ubicacion[k] == filtros[i]){
+                filtro.push(alojamientosFiltrar[j]);
+              }
+          }
+           
+         }
+        }else{
+          let temporal: Alojamiento[] = filtro;
+          for(let j = 0; j < temporal.length; j++){
+            for(let k = 0; k < temporal[j].ubicacion.length; k++){
+              if(temporal[j].ubicacion[k] == filtros[i]){
+                if(j == 0){
+                  filtro = [];
+                  filtro.push(temporal[j]);
+                }else{
+                  filtro.push(temporal[j]);  
+                }  
+              }else{
+                filtro = [];
+              }   
+          }
+          }
+        }
+      }
+     return filtro;
     }
+  }
 }
 
 export interface Alojamiento{
@@ -90,4 +141,5 @@ export interface Alojamiento{
   descripcion: string;
   idx?: number;
   oferta?: boolean;
+  ubicacion: string[];
 }
