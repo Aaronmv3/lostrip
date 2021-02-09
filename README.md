@@ -29,3 +29,7 @@ Arreglos menores visuales
 Envio de formularios a traves de evenemitter y a traves de servicio
 
 Muestra precio segun numero de habitaciones
+
+Pagina alojamientos responsive
+
+Creacion de sistema de filtros y ordenacion
