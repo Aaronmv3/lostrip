@@ -46,3 +46,7 @@ Arreglo de problemas visuales
 Añadir pagina de login y registro
 
 Añadir guards para proteger las paginas de login y registro si ya esta autenticado
+
+Envio de email para verificar correos no autenticados
+
+Creacion de alertas para los errores en el login y en registro
