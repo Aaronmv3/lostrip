@@ -13,7 +13,7 @@ Filtro para alojamientos en oferta
 
 Implementacion de sistema de cookies para contabilizar las veces entrado en la pagina
 
-## Version 0.3 (Current)
+## Version 0.3 (old)
 Añadir fecha de expiracion de cookies
 
 Arreglar problema de vista de calendario en versiones moviles
@@ -33,3 +33,16 @@ Muestra precio segun numero de habitaciones
 Pagina alojamientos responsive
 
 Creacion de sistema de filtros y ordenacion
+
+## Version 0.4(current)
+Añadir pagina de experiencias con sus correspondientes funciones
+
+Añadir sistema de login/registro/logout
+
+Separar componentes de paginas y mejorar maquetado del proyecto
+
+Arreglo de problemas visuales
+
+Añadir pagina de login y registro
+
+Añadir guards para proteger las paginas de login y registro si ya esta autenticado
