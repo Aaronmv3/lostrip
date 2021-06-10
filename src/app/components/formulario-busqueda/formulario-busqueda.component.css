@@ -119,11 +119,7 @@ select.form-control+.select-arrow:after {
     margin-left: 15px;
 }
 
-@media(max-width:767px) {
-    .encabezado-form {
-        display: none;
-    }
-}
+@media(max-width:992px) {}
 
 @media(max-width:525px) {
     .show {

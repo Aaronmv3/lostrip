@@ -1,0 +1,22 @@
+<div class="muestraExperiencias">
+    <app-formulario-busqueda class="formularioBusqueda" (resultForm)="obtenerBusqueda($event)"></app-formulario-busqueda>
+    <div class="filtrosBusqueda">
+        <form [formGroup]="shortByForm" class="form-mat-sort">
+            <mat-form-field appearance="fill" class="selectorOrden">
+                <mat-label class="texto-mat">Ordenar por:</mat-label>
+                <mat-select class="texto-mat" formControlName="shortBy" disableRipple>
+                    <mat-option class="option-mat" *ngFor="let orden of ordenado" [value]="orden" (click)="ordenarAlojamientos()">
+                        {{orden}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <app-filtros-busqueda class="filtros-app" (filtrado)="AplicarFiltros($event)"></app-filtros-busqueda>
+    </div>
+    <div class="informacionBusqueda">
+        <h1>{{busqueda.busqueda}}: {{experiencias.length}} experiencias</h1>
+        <div class="card-group">
+            <app-alojamiento-tarjeta class="tarjeta" [Alojamiento]="experiencia" [habitaciones]="this.busqueda.numHabitaciones" [index]="i" *ngFor="let experiencia of experiencias | sortBy: ordenacion: valor; let i = index"></app-alojamiento-tarjeta>
+        </div>
+    </div>
+</div>

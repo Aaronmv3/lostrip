@@ -1,81 +1,47 @@
 import { Injectable } from '@angular/core';
-import { busqueda } from './busqueda.service';
+import { Alojamiento } from 'src/models/alojamientos.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 
 export class AlojamientosService {
   
-  private alojamientos : Alojamiento[] = [
-    {
-      nombre: 'Casa en la montaña',
-      precio: 76,
-      dueño: 'Jose Ramon',
-      localizacion: 'leon',
-      foto: '/assets/Imagenes/alojamientos/montanaLeon.jpg',
-      descripcion: 'Acogedora casa en la sierra de León',
-      ubicacion:[
-        "Montaña",
-        "Piscina",
-      ],
-    },
-    {
-      nombre: 'Piso en la playa',
-      precio: 90,
-      dueño: 'Luis Fernando',
-      localizacion: 'baiona',
-      foto: '/assets/Imagenes/alojamientos/playaBaiona.jpg',
-      descripcion: 'Piso en primera linea de playa en el pueblo de Baiona',
-      oferta: true,
-      ubicacion:[
-        "Playa"
-      ],
-    },
-    {
-      nombre: 'Hotel Barcelo Ourense',
-      precio: 56,
-      dueño: 'Barcelo',
-      localizacion: 'ourense',
-      foto: '/assets/Imagenes/alojamientos/BarceloOurense.jpg',
-      descripcion: 'Gran hotel de 4 estrellas en el centro de Ourense',
-      ubicacion:[
-        "Ciudad"
-      ],
-    },
-    {
-      nombre: 'Palace Madrid',
-      precio: 120,
-      dueño: 'Palace',
-      localizacion: 'madrid',
-      foto: '/assets/Imagenes/alojamientos/PalaceMadrid.jpg',
-      descripcion: 'Gran hotel en el centro de Madrid a pocos metros de una estacion de metro',
-      oferta: true,
-      ubicacion:[
-        "Ciudad",
-      ],
-    },
-    {
-      nombre: 'El avenida Palace',
-      precio: 170,
-      dueño: 'Avenida palace',
-      localizacion: 'barcelona',
-      foto: '/assets/Imagenes/alojamientos/PalaceBarcelona.jpg',
-      descripcion: 'Hotel en barcelona',
-      oferta: true,
-      ubicacion:[
-        "Ciudad",
-        "Piscina",
-      ],
-    }
-  ];
+  private alojamientos: Alojamiento[] = [];
+  private alojURL: string;
+  private alojamiento: Alojamiento;
 
-
-  constructor() { 
-    console.log('Servicio funcionando');
+  constructor(private http: HttpClient) { 
+    this.alojURL = 'http://localhost:8080/alojamiento';
   }
 
   getAlojamientos(){
+
+    this.alojamientos = [];
+    this.http.get(this.alojURL).subscribe(data =>{
+      console.log(Object.keys(data).length);
+      
+      for(let i = 0; i< Object.keys(data).length; i++){
+      
+        this.alojamiento = {
+          nombre : data[i].nombre,
+          descripcion : data[i].descripcion,
+          dueno : data[i].dueno,
+          estrellas : data[i].estrellas,
+          foto : data[i].fotos,
+          idx : data[i].id,
+          localizacion : data[i].localizacion,
+          oferta : data[i].oferta,
+          ubicacion : data[i].filtros,
+          valoracion : data[i].valoracion
+        }
+        
+        this.alojamientos.push(this.alojamiento);        
+      }
+    });
     return this.alojamientos;
+    
   }
+
   
   getAlojamiento(id: string){
     return this.alojamientos[id];
@@ -83,7 +49,8 @@ export class AlojamientosService {
 
   buscarAlojamiento( busqueda: string){
     if(busqueda == "Total"){
-      return this.alojamientos;
+
+      return this.getAlojamientos();
     }else{
         busqueda = busqueda.toLowerCase();
         let busquedaAlojamiento: Alojamiento[] = [];
@@ -93,53 +60,4 @@ export class AlojamientosService {
         return busquedaAlojamiento;
       }
     }
-
-  filtrarAlojamiento(filtros: Array<string>, alojamientosFiltrar: Alojamiento[], alojamientosGuardar: Alojamiento[], filtrado2: boolean){
-    if(filtros.length == 0 || filtrado2 == true){
-      return alojamientosGuardar;
-    }else{
-      let filtro: Alojamiento[] = [];
-      for(let i = 0; i <  filtros.length; i++){
-        if(i == 0){
-         for(let j = 0; j < alojamientosFiltrar.length; j++){
-          for(let k = 0; k < alojamientosFiltrar[j].ubicacion.length; k++){
-              if(alojamientosFiltrar[j].ubicacion[k] == filtros[i]){
-                filtro.push(alojamientosFiltrar[j]);
-              }
-          }
-           
-         }
-        }else{
-          let temporal: Alojamiento[] = filtro;
-          for(let j = 0; j < temporal.length; j++){
-            for(let k = 0; k < temporal[j].ubicacion.length; k++){
-              if(temporal[j].ubicacion[k] == filtros[i]){
-                if(j == 0){
-                  filtro = [];
-                  filtro.push(temporal[j]);
-                }else{
-                  filtro.push(temporal[j]);  
-                }  
-              }else{
-                filtro = [];
-              }   
-          }
-          }
-        }
-      }
-     return filtro;
-    }
-  }
-}
-
-export interface Alojamiento{
-  nombre: string;
-  precio: number;
-  dueño: string;
-  localizacion: string;
-  foto: string;
-  descripcion: string;
-  idx?: number;
-  oferta?: boolean;
-  ubicacion: string[];
 }

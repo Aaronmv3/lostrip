@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BusquedaService, busqueda } from '../../servicios/busqueda.service';
+import { busqueda } from 'src/models/busqueda.model';
+import { BusquedaService} from '../../servicios/busqueda.service';
 
 @Component({
   selector: 'app-formulario-busqueda',
@@ -40,7 +41,13 @@ export class FormularioBusquedaComponent implements OnInit {
     }else{
       this.resultForm.emit(this.buscar);
     }
-    return this.route.navigate(["/alojamientos"]);
+
+    if(this.route.url == "/home" || this.route.url == "/alojamientos"){
+      return this.route.navigate(["/alojamientos"]);
+    }else{
+      return this.route.navigate(["/experiencias"])
+    }
+    
   }
 
 }

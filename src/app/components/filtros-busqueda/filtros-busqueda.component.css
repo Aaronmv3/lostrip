@@ -57,7 +57,7 @@
     }
 }
 
-@media(max-width: 470px) {
+@media(max-width: 575px) {
     .no-filter-width {
         width: 90vw !important;
     }

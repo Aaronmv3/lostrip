@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faFacebookF, faGooglePlus, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { AuthService } from '../../../../servicios/auth.service';
 
 @Component({
   selector: 'app-cabecera',
@@ -11,9 +13,24 @@ export class CabeceraComponent implements OnInit {
     faFacebookF = faFacebookF;
     faTwitter = faTwitter;
     faGooglePlus = faGooglePlus;
-  constructor() { }
+    render = false;
 
-  ngOnInit(): void {
+    autenticado: boolean;
+  constructor(private _authservice: AuthService, private router: Router) {   
   }
 
-}
+
+  ngOnInit(): void {
+    if(localStorage.getItem("Logged")){
+      this.autenticado = true;
+    } else{
+      this.autenticado = false;
+    }
+  }
+
+  logout(){
+    this._authservice.logout();
+    this.autenticado = false;
+  }
+  }
+

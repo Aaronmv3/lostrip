@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { busqueda } from 'src/models/busqueda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +27,5 @@ export class BusquedaService {
     }
     return this.busqueda;
   }
-}
-
-export interface busqueda{
-  busqueda: string,
-  entrada: string,
-  salida: string,
-  numHabitaciones: number,
-  numAdultos: number,
-  numNinos: number
 }
 

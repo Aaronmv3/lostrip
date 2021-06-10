@@ -8,7 +8,12 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-selection-list #filterList formControlName="filtros">
-            <mat-list-option (click)="enviar()" *ngFor="let filtro of filtros" [value]="filtro">{{filtro}}</mat-list-option>
+            <div *ngIf="this.ruta == '/alojamientos'">
+                <mat-list-option (click)="enviar()" *ngFor="let filtro of filtros" [value]="filtro">{{filtro}}</mat-list-option>
+            </div>
+            <div *ngIf="this.ruta == '/experiencias'">
+                <mat-list-option (click)="enviar()" *ngFor="let filtro of filtros2" [value]="filtro">{{filtro}}</mat-list-option>
+            </div>
         </mat-selection-list>
     </mat-expansion-panel>
 </form>

@@ -1,9 +1,53 @@
-<div class="card animated fadeIn">
-    <div class="card-img"><img [src]="Alojamiento.foto" [alt]="Alojamiento.nombre"></div>
+<div class="card animated fadeInRight card1" *ngIf="this.ruta == '/home'">
+    <div class="card-img"><img [src]="Alojamiento.foto[0].url" [alt]="Alojamiento.nombre"></div>
     <div class="card-body">
-        <h5>{{Alojamiento.nombre}}</h5>
-        <h6 class="pt-1 pb-2 precio">{{Alojamiento.precio * this.habitaciones}}€/noche</h6>
-        <p *ngIf="mostrar == true">{{Alojamiento.descripcion}}</p>
-        <button (click)="verAlojamiento()" type="button" class="btn btn-outline-danger btn-block btn-sm">Descubre este alojamiento</button>
+        <h5>{{Alojamiento.nombre}}
+            <ng-template #t let-fill="fill">
+                <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                </span>
+            </ng-template>
+
+            <ngb-rating class="estrellas" [(rate)]="Alojamiento.estrellas" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+        </h5>
+        <h6 class="pt-1 pb-2 descripcion">{{Alojamiento.descripcion}}</h6>
+        <p *ngIf="this.ruta == '/experiencias' || this.ruta == '/alojamientos'">{{Alojamiento.descripcion}}</p>
+        <button *ngIf="this.ruta == '/alojamientos' || this.ruta == '/home'" (click)="verAlojamiento()" type="button" class="btn btn-outline-danger btn-block btn-sm">Descubre este alojamiento</button>
+        <button *ngIf="this.ruta == '/experiencias'" (click)="verExperiencia()" type="button" class="btn btn-outline-danger btn-block btn-sm">Descubre esta experiencia</button>
+    </div>
+</div>
+
+<div class="card animated fadeInRight card2" *ngIf="this.ruta != '/home'">
+    <div class="row ">
+        <div class="col-md-7 px-3">
+
+            <h4 class="card-title">{{Alojamiento.nombre}}
+                <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+              <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                    </span>
+                </ng-template>
+
+                <ngb-rating class="estrellas" [(rate)]="Alojamiento.estrellas" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+            </h4>
+            <p class="card-text descripcion">
+                {{Alojamiento.descripcion}}
+            </p>
+            <p class="card-text precio2">{{Alojamiento.precio * this.habitaciones}}€/noche</p>
+            <p class="card-text valoracion">{{this.puntuacion}} <span class="puntuacion">{{this.Alojamiento.valoracion}}</span></p>
+            <div class="boton">
+                <button *ngIf="this.ruta == '/alojamientos' || this.ruta == '/home'" (click)="verAlojamiento()" type="button" class="btn btn-outline-danger btn-block btn-sm ">Descubre este alojamiento</button>
+                <button *ngIf="this.ruta == '/experiencias'" (click)="verExperiencia()" type="button" class="btn btn-outline-danger btn-block btn-sm ">Descubre esta experiencia</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <ngb-carousel class="carousel">
+                <ng-template ngbSlide *ngFor="let foto of Alojamiento.foto">
+                    <div class="picsum-img-wrapper">
+                        <img [src]="foto.url" alt="fotoAlojamiento">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
     </div>
 </div>

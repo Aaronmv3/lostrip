@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
 import {faFacebookF, faGooglePlus} from '@fortawesome/free-brands-svg-icons';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 

@@ -10,14 +10,17 @@ import { AlojamientosService } from './servicios/alojamientos.service';
 // Componentes
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/Estructura/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './Pages/home/home.component';
 import { CabeceraComponent } from './components/Estructura/cabecera/cabecera/cabecera.component';
 import { FooterComponent } from './components/Estructura/footer/footer.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SortByPipe } from './pipes/sort-by.pipe';
 import { FormularioBusquedaComponent } from './components/formulario-busqueda/formulario-busqueda.component';
 import { AlojamientoTarjetaComponent } from './components/alojamiento-tarjeta/alojamiento-tarjeta.component';
-import { ListaAlojamientosComponent } from './components/paginas/lista-alojamientos/lista-alojamientos.component';
+import { ListaAlojamientosComponent } from './Pages/lista-alojamientos/lista-alojamientos.component';
+import { ListaExperienciasComponent } from './Pages/lista-experiencias/lista-experiencias.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
 
 //Imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,6 +31,12 @@ import { FiltrosBusquedaComponent } from './components/filtros-busqueda/filtros-
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import {HttpClientModule} from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 
 
 @NgModule({
@@ -43,6 +52,9 @@ import {MatSelectModule} from '@angular/material/select';
     ListaAlojamientosComponent,
     FormularioBusquedaComponent,
     FiltrosBusquedaComponent,
+    ListaExperienciasComponent,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +68,11 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     MatExpansionModule,
     MatListModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
     
   ],
   providers: [
